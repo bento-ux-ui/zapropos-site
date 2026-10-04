@@ -3,166 +3,51 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#090b0e">
+  <meta name="theme-color" content="#070808">
   <meta name="description" content="ZAPROPOS, projet éditorial indépendant : une édition de zapping vidéo, de la sélection des sujets à la diffusion. Présentation, confidentialité, conditions et contact.">
   <title>ZAPROPOS — Le zapping du jour</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Barlow+Condensed:wght@600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://zapropos.fr/">
   <style>
-    :root {
-      color-scheme: dark;
-      --bg:#090b0e; --surface:#12151a; --surface-raised:#191d23;
-      --fg:#f6f4ef; --muted:#bfc4cd; --line:#414752;
-      --red:#ff5f56; --yellow:#ffd15c; --blue:#70c7e9;
-      --max:1120px;
-      font-family:"Barlow", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
-    }
-    *, *::before, *::after { box-sizing:border-box; }
-    html { scroll-behavior:smooth; scroll-padding-top:28px; }
-    body {
-      margin:0; min-width:300px; color:var(--fg); line-height:1.6;
-      background:
-        radial-gradient(ellipse at 75% 0,rgba(100,138,161,.09),transparent 42rem),
-        var(--bg);
-    }
-    body::before {
-      content:"";position:fixed;inset:0;z-index:10;pointer-events:none;
-      background:repeating-linear-gradient(to bottom,rgba(255,255,255,.055) 0 1px,transparent 1px 4px);
-      opacity:.075;
-    }
-    a {color:inherit;text-underline-offset:.22em}
-    a:hover {color:#fff}
-    a:focus-visible {outline:2px solid var(--yellow);outline-offset:4px}
-    header,main,footer {width:min(var(--max),calc(100% - 44px));margin-inline:auto}
-    .masthead {
-      display:flex;align-items:center;justify-content:space-between;gap:24px;
-      border-bottom:1px solid var(--line);padding:26px 0 24px;
-    }
-    .brand {
-      color:var(--fg);text-decoration:none;display:inline-flex;align-items:baseline;
-      font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
-      font-weight:900;font-size:clamp(1.8rem,3vw,2.18rem);letter-spacing:.065em;
-      line-height:1;white-space:nowrap;
-    }
-    .brand-initial {position:relative;display:inline-block;text-shadow:-1px 0 rgba(255,95,86,.22),1px 0 rgba(112,199,233,.22)}
-    .brand-initial::after {
-      content:"";position:absolute;left:.05em;bottom:-.24em;width:.78em;height:4px;
-      background:linear-gradient(90deg,var(--red) 0 52%,var(--yellow) 52% 100%);
-      border-radius:1px;box-shadow:0 0 9px rgba(255,95,86,.18);
-    }
-    .nav{display:flex;align-items:center;flex-wrap:wrap;gap:11px 22px}
-    .nav a {
-      font-family:"Barlow Condensed",Arial,sans-serif;font-size:1rem;font-weight:700;
-      color:var(--muted);text-decoration:none;letter-spacing:.065em;text-transform:uppercase;
-    }
-    .nav a:hover {color:var(--fg)}
-    .hero-screen {
-      position:relative;isolation:isolate;overflow:hidden;margin:32px 0 0;
-      border:1px solid #505760;border-radius:12px;
-      background:
-        radial-gradient(ellipse at 87% 10%,rgba(255,95,86,.12),transparent 42%),
-        radial-gradient(ellipse at 10% 100%,rgba(112,199,233,.085),transparent 45%),
-        linear-gradient(155deg,#22252d,#101318 65%,#0b0d11);
-      box-shadow:0 27px 80px rgba(0,0,0,.36),inset 0 0 0 1px rgba(255,255,255,.035);
-    }
-    .hero-screen::before{
-      content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-      background:
-        linear-gradient(90deg,rgba(255,95,86,.025),transparent 10% 90%,rgba(112,199,233,.025)),
-        repeating-linear-gradient(180deg,rgba(255,255,255,.065) 0 1px,transparent 1px 4px);
-      opacity:.22;
-    }
-    .hero-screen::after{
-      content:"";position:absolute;inset:0;pointer-events:none;z-index:1;
-      box-shadow:inset 0 0 115px rgba(0,0,0,.32);border-radius:inherit;
-    }
-    .hero{position:relative;z-index:2;max-width:920px;padding:65px clamp(25px,5vw,64px) 78px}
-    .broadcast-meta{
-      font-family:"Barlow Condensed",Arial,sans-serif;font-size:.88rem;letter-spacing:.19em;
-      font-weight:700;text-transform:uppercase;color:#d1d5da;margin-bottom:26px;
-      display:flex;align-items:center;gap:13px;flex-wrap:wrap;
-    }
-    .signal{display:inline-block;width:7px;height:7px;background:var(--red);box-shadow:0 0 10px rgba(255,95,86,.6);border-radius:50%}
-    .tag{display:inline-block;font-weight:700;color:var(--muted);letter-spacing:.14em;text-transform:uppercase;font-size:.78rem}
-    .hero h1{
-      position:relative;margin:0 0 29px;text-transform:uppercase;
-      font-family:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
-      font-weight:900;font-size:clamp(3.4rem,9.7vw,8.15rem);
-      line-height:.84;letter-spacing:-.026em;
-      text-shadow:-1px 0 rgba(255,95,86,.22),1px 0 rgba(112,199,233,.22);
-    }
-    .hero h1 span{display:block}
-    .hero h1 .second-line{padding-left:clamp(0px,5vw,47px)}
-    .hero h1::after{
-      content:"";display:block;width:clamp(70px,13vw,140px);height:5px;margin-top:25px;
-      background:linear-gradient(90deg,var(--red) 0 50%,var(--yellow) 50% 100%);
-    }
-    .hero p{color:#dee0e5;font-size:clamp(1.04rem,2vw,1.24rem);max-width:620px;line-height:1.5;margin:0}
-    .actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
-    .btn{
-      min-height:45px;display:inline-flex;align-items:center;padding:10px 18px;
-      text-decoration:none;text-transform:uppercase;letter-spacing:.05em;
-      font-family:"Barlow Condensed",Arial,sans-serif;font-weight:800;font-size:1rem;
-      border:1px solid #9199a4;background:rgba(255,255,255,.025);
-    }
-    .btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
-    .btn.primary:hover{background:var(--yellow);border-color:var(--yellow);color:var(--bg)}
-    .screen-footer{
-      position:relative;z-index:2;display:flex;justify-content:space-between;gap:10px;
-      padding:11px 18px;border-top:1px solid rgba(255,255,255,.13);color:#c3c8d0;
-      font:700 .76rem "Barlow Condensed",Arial,sans-serif;text-transform:uppercase;letter-spacing:.14em;
-    }
-    .rule{border:0;border-top:1px solid var(--line);margin:0}
-    section{padding:58px 0 64px;scroll-margin-top:24px}
-    .section-title{display:flex;align-items:baseline;gap:19px;margin:0 0 25px}
-    .num{font:800 1rem "Barlow Condensed",Arial,sans-serif;letter-spacing:.12em;color:var(--yellow);white-space:nowrap}
-    .section-title h2{
-      font:800 clamp(2rem,4.8vw,3.8rem)/1.05 "Barlow Condensed","Arial Narrow",Arial,sans-serif;
-      letter-spacing:-.01em;text-transform:uppercase;margin:0;
-    }
-    .lead{font-size:clamp(1.08rem,1.9vw,1.23rem);color:#e0e3e7;max-width:810px}
+    :root{color-scheme:dark;--bg:#070808;--fg:#eeeDE8;--muted:#b9b9b5;--line:#383936;--aqua:#8ddfd0;font-family:"Barlow",Arial,sans-serif}
+    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}
+    body{margin:0;min-width:300px;background:var(--bg);color:var(--fg);line-height:1.62}
+    a{color:inherit;text-underline-offset:.22em}a:hover{color:#fff}a:focus-visible{outline:2px solid var(--aqua);outline-offset:4px}
+    header,main,footer{width:min(1100px,calc(100% - 44px));margin-inline:auto}
+    .masthead{border-bottom:1px solid var(--line);padding:26px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{font-size:1.48rem;font-weight:900;letter-spacing:.02em;text-decoration:none;color:var(--fg);line-height:1;white-space:nowrap}
+    .brand-initial{position:relative}.brand-initial::after{content:"";position:absolute;left:0;bottom:-.31em;width:.63em;height:3px;background:var(--aqua)}
+    .nav{display:flex;flex-wrap:wrap;gap:12px 21px}.nav a{text-decoration:none;color:var(--muted);font-size:.91rem;font-weight:600}.nav a:hover{color:var(--fg)}
+    .hero-screen{position:relative;isolation:isolate;overflow:hidden;background:#050606;margin:26px 0 0;border:1px solid #282b29;min-height:430px}
+    .hero-screen::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.27;background:repeating-linear-gradient(180deg,rgba(0,0,0,.85) 0 2px,transparent 2px 5px)}
+    .hero{position:relative;z-index:2;text-align:center;padding:65px 28px 59px}
+    .broadcast-meta{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#a7aaa6;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
+    .signal{display:none}.tag{font-size:inherit;color:inherit}
+    .hero h1{font-family:"Barlow",Arial,sans-serif;font-weight:900;letter-spacing:-.055em;font-size:clamp(3rem,9vw,7.7rem);line-height:.99;margin:0 auto 40px;text-transform:uppercase;max-width:100%}
+    .hero h1 span{display:block}.hero h1 .second-line{font-size:.41em;letter-spacing:.04em;margin-top:13px}
+    .hero h1::after{content:"";display:block;background:var(--aqua);width:clamp(54px,8vw,94px);height:7px;margin:19px auto 0}
+    .hero p{max-width:660px;margin:0 auto;color:#d2d2cf;font-size:clamp(1.04rem,2vw,1.19rem)}
+    .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:42px;padding:9px 17px;border:1px solid #777b77;font-weight:700;font-size:.9rem;background:transparent}
+    .btn.primary{background:var(--fg);border-color:var(--fg);color:var(--bg)}.btn.primary:hover{background:#fff}
+    .screen-footer{position:relative;z-index:2;display:flex;justify-content:space-between;gap:12px;border-top:1px solid #282b29;padding:10px 16px;font-size:.72rem;letter-spacing:.12em;color:#a7aaa6}
+    .rule{border:0;border-top:1px solid var(--line);margin:0}section{padding:56px 0 62px;scroll-margin-top:25px}
+    .section-title{display:flex;align-items:baseline;gap:22px;margin:0 0 22px}.num{color:var(--muted);font-size:.86rem;font-weight:800}
+    .section-title h2{font-size:clamp(1.85rem,4.2vw,3.3rem);letter-spacing:-.045em;line-height:1.08;margin:0;font-weight:800}
+    .lead{max-width:815px;color:#deded9;font-size:1.15rem}
     .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .tile{position:relative;background:var(--surface);border:1px solid var(--line);padding:27px 23px;min-width:0}
-    .tile::before{content:"";position:absolute;left:23px;top:0;width:42px;height:3px;background:var(--red)}
-    .tile:nth-child(2)::before{background:var(--yellow)}.tile:nth-child(3)::before{background:var(--blue)}
-    .tile h3,.detail h3{
-      font-family:"Barlow Condensed",Arial,sans-serif;line-height:1.15;
-      font-weight:800;text-transform:uppercase;letter-spacing:.025em;
-    }
-    .tile h3{font-size:1.35rem;margin:5px 0 12px}
-    .tile p{color:var(--muted);margin:0}
-    .detail{max-width:840px;overflow-wrap:anywhere}
-    #fonctionnement>.detail{
-      margin-top:28px;border-left:3px solid var(--red);
-      background:var(--surface);padding:13px 25px 17px;
-    }
-    .detail h3{font-size:1.4rem;margin:30px 0 9px}
-    .detail p,.detail li{color:var(--muted)}
-    .detail a{color:var(--fg)}
-    .detail p{margin:0 0 13px}.detail ul{padding-left:21px}.detail li{margin:7px 0}
-    .detail p.small{font-size:.92rem;color:#cbd0d8}
-    .detail code{font:.86em ui-monospace,SFMono-Regular,Consolas,monos;background:#222732;padding:.13em .33em;border:1px solid #454b57}
-    .contact{font-size:clamp(1.12rem,3vw,2rem);font-weight:800;letter-spacing:-.02em;overflow-wrap:anywhere}
-    .footer{
-      border-top:1px solid var(--line);padding:25px 0 42px;display:flex;
-      justify-content:space-between;gap:16px;flex-wrap:wrap;color:var(--muted);font-size:.87rem;
-    }
+    .tile{border:1px solid var(--line);background:#0c0d0d;padding:25px 22px}
+    .tile h3{font-size:1.19rem;margin:0 0 12px}.tile p{color:var(--muted);margin:0}
+    .detail{max-width:840px;overflow-wrap:anywhere}.detail h3{font-size:1.26rem;margin:30px 0 9px}
+    .detail p,.detail li{color:var(--muted)}.detail a{color:var(--fg)}.detail p{margin:0 0 13px}
+    .detail code{font:.86em ui-monospace,Consolas,monos;border:1px solid var(--line);padding:.12em .33em}
+    #fonctionnement>.detail{border-left:2px solid var(--line);padding-left:20px;margin-top:30px}
+    .small{font-size:.91rem}.contact{font-size:clamp(1.12rem,3vw,2rem);font-weight:800;overflow-wrap:anywhere}
+    .footer{border-top:1px solid var(--line);padding:27px 0 42px;display:flex;justify-content:space-between;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:.86rem}
     .footer a{text-decoration:none}.footnav{display:flex;gap:14px 18px;flex-wrap:wrap}
-    @media(max-width:760px){
-      header,main,footer{width:calc(100% - 32px)}
-      .masthead{align-items:flex-start;flex-direction:column;gap:25px}
-      .nav{gap:12px 16px}.hero-screen{margin-top:20px}
-      .hero{padding:45px 23px 52px}
-      .hero h1{font-size:clamp(3.1rem,14vw,5.3rem)}
-      .hero h1 .second-line{padding-left:0}
-      .tiles{grid-template-columns:1fr}
-      .screen-footer{flex-wrap:wrap}
-      section{padding:43px 0 49px}.section-title{gap:13px}
-      .footer{flex-direction:column}
-      #fonctionnement>.detail{padding:10px 17px 14px}
-    }
+    @media(max-width:740px){header,main,footer{width:calc(100% - 32px)}.masthead{align-items:flex-start;flex-direction:column}.hero{padding:52px 19px 48px}.hero-screen{min-height:0}.hero h1{font-size:clamp(2.65rem,12vw,5rem)}.tiles{grid-template-columns:1fr}.screen-footer{flex-wrap:wrap}section{padding:42px 0 50px}.section-title{gap:13px}.footer{flex-direction:column}}
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
@@ -177,7 +62,7 @@
     <div class="hero-screen">
       <div class="hero">
         <div class="broadcast-meta"><span class="signal" aria-hidden="true"></span><span>ÉDITION / ZAPROPOS</span><span class="tag">Projet média indépendant · En préparation</span></div>
-        <h1><span>LE ZAPPING</span><span class="second-line">DU JOUR.</span></h1>
+        <h1><span>ZAPROPOS</span><span class="second-line">LE ZAPPING DU JOUR</span></h1>
         <p>Une sélection de moments d'actualité, de prises de parole et de séquences décalées, réunis dans un montage court au rythme soutenu.</p>
         <div class="actions"><a class="btn primary" href="#projet">Découvrir ZAPROPOS</a><a class="btn" href="https://www.youtube.com/@zapropos.officiel" target="_blank" rel="noopener noreferrer">Chaîne YouTube ↗</a><a class="btn" href="#confidentialite">Confidentialité</a></div>
       </div>
@@ -219,7 +104,7 @@
         <h3>Retirer l'autorisation et demander la suppression</h3>
         <p>L'exploitant peut retirer à tout moment l'accès Google de ZAPROPOS depuis la page <a href="https://myaccount.google.com/connections" target="_blank" rel="noopener noreferrer">Connexions tierces de son compte Google</a>. Cette révocation coupe l'accès futur de l'application aux données autorisées. Pour demander la suppression des informations encore conservées par ZAPROPOS, écrire à <a href="mailto:zapropos-officiel@gmail.com">zapropos-officiel@gmail.com</a>. Les demandes seront traitées dans un délai maximal de 30 jours, hors obligations légales contraires.</p>
         <h3>Visite du site</h3>
-        <p>Ce site statique ne propose ni création de compte ni formulaire, et n'intègre pas d'outil de suivi publicitaire. L'hébergeur Cloudflare peut traiter des données techniques de connexion nécessaires à la sécurité et à la fourniture du site, selon sa propre politique. Les polices Barlow et Barlow Condensed sont chargées depuis Google Fonts : votre navigateur contacte ce service pour les afficher. Si vous contactez ZAPROPOS par courriel, votre adresse et votre message sont utilisés uniquement pour répondre et assurer le suivi de votre demande.</p>
+        <p>Ce site statique ne propose ni création de compte ni formulaire, et n'intègre pas d'outil de suivi publicitaire. L'hébergeur Cloudflare peut traiter des données techniques de connexion nécessaires à la sécurité et à la fourniture du site, selon sa propre politique. La police Barlow est chargée depuis Google Fonts : votre navigateur contacte ce service pour les afficher. Si vous contactez ZAPROPOS par courriel, votre adresse et votre message sont utilisés uniquement pour répondre et assurer le suivi de votre demande.</p>
         <h3>Vos droits et documentation externe</h3>
         <p>Vous pouvez demander l'accès, la rectification ou la suppression des données vous concernant à l'adresse de contact ci-dessus. Pour plus d'informations sur les services Google et YouTube, consultez la <a href="https://policies.google.com/privacy?hl=fr" target="_blank" rel="noopener noreferrer">politique de confidentialité de Google</a>, les <a href="https://www.youtube.com/t/terms" target="_blank" rel="noopener noreferrer">conditions d'utilisation YouTube</a> et les <a href="https://developers.google.com/youtube/terms/developer-policies" target="_blank" rel="noopener noreferrer">règles applicables aux services API YouTube</a>.</p>
       </div>
