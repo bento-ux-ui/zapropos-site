@@ -11,49 +11,80 @@
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="canonical" href="https://zapropos.fr/">
   <style>
-    :root{color-scheme:dark;--bg:#070808;--fg:#eeeDE8;--muted:#b9b9b5;--line:#383936;--aqua:#8ddfd0;font-family:"Barlow",Arial,sans-serif}
-    *,*::before,*::after{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:25px}
-    body{margin:0;min-width:300px;background:var(--bg);color:var(--fg);line-height:1.62}
-    a{color:inherit;text-underline-offset:.22em}a:hover{color:#fff}a:focus-visible{outline:2px solid var(--aqua);outline-offset:4px}
-    header,main,footer{width:min(1100px,calc(100% - 44px));margin-inline:auto}
-    .masthead{border-bottom:1px solid var(--line);padding:26px 0;display:flex;align-items:center;justify-content:space-between;gap:24px}
-    .brand{font-size:1.48rem;font-weight:900;letter-spacing:.02em;text-decoration:none;color:var(--fg);line-height:1;white-space:nowrap}
-    .brand-initial{position:relative}.brand-initial::after{content:"";position:absolute;left:0;bottom:-.31em;width:.63em;height:3px;background:var(--aqua)}
-    .nav{display:flex;flex-wrap:wrap;gap:12px 21px}.nav a{text-decoration:none;color:var(--muted);font-size:.91rem;font-weight:600}.nav a:hover{color:var(--fg)}
-    .hero-screen{position:relative;isolation:isolate;overflow:hidden;background:#050606;margin:26px 0 0;border:1px solid #282b29;min-height:430px}
-    .hero-screen::before{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;opacity:.27;background:repeating-linear-gradient(180deg,rgba(0,0,0,.85) 0 2px,transparent 2px 5px)}
-    .hero{position:relative;z-index:2;text-align:center;padding:65px 28px 59px}
-    .broadcast-meta{font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;color:#a7aaa6;display:flex;justify-content:center;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:26px}
-    .signal{display:none}.tag{font-size:inherit;color:inherit}
-    .hero h1{font-family:"Barlow",Arial,sans-serif;font-weight:900;letter-spacing:-.055em;font-size:clamp(3rem,9vw,7.7rem);line-height:.99;margin:0 auto 40px;text-transform:uppercase;max-width:100%}
-    .hero h1 span{display:block}.hero h1 .second-line{font-size:.41em;letter-spacing:.04em;margin-top:13px}
-    .hero h1::after{content:"";display:block;background:var(--aqua);width:clamp(54px,8vw,94px);height:7px;margin:19px auto 0}
-    .hero p{max-width:660px;margin:0 auto;color:#d2d2cf;font-size:clamp(1.04rem,2vw,1.19rem)}
+    :root {
+      color-scheme:dark;
+      --bg:#050607; --surface:#090a0b; --fg:#f4f2e9;
+      --muted:#c1c1bd; --line:#3a3c3d;
+      font-family:Barlow,Arial,Helvetica,sans-serif;
+    }
+    *,*::before,*::after{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:32px}
+    body{margin:0;min-width:300px;background:var(--bg);color:var(--fg);line-height:1.6}
+    a{color:inherit;text-underline-offset:.2em}
+    a:hover{color:#fff}
+    a:focus-visible{outline:2px solid var(--fg);outline-offset:4px}
+    header,main,footer{width:min(1090px,calc(100% - 44px));margin-inline:auto}
+    .masthead{display:flex;align-items:center;justify-content:space-between;gap:26px;padding:24px 0;border-bottom:1px solid var(--line)}
+    .brand{font-size:1.5rem;font-weight:900;letter-spacing:-.025em;text-decoration:none;line-height:1}
+    .nav{display:flex;gap:12px 21px;flex-wrap:wrap}
+    .nav a{font-size:.87rem;font-weight:700;letter-spacing:.035em;text-transform:uppercase;color:var(--muted);text-decoration:none}
+    .nav a:hover{color:var(--fg)}
+    .hero-screen{position:relative;isolation:isolate;margin:30px 0 0;background:var(--bg);overflow:hidden;border:1px solid #202325}
+    .hero-screen::after{
+      content:"";position:absolute;z-index:2;inset:0;pointer-events:none;
+      background:repeating-linear-gradient(to bottom,transparent 0 3px,rgba(0,0,0,.18) 3px 4px);
+      opacity:.3;
+    }
+    .hero{position:relative;z-index:1;text-align:center;padding:40px 30px 66px}
+    .hero h1{margin:0 auto;max-width:838px;line-height:1}
+    .hero-logo{display:block;width:100%;height:auto}
+    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    .hero-kicker{font-size:.78rem;letter-spacing:.19em;text-transform:uppercase;font-weight:700;color:var(--muted);margin:0 0 10px}
+    .hero p{max-width:670px;margin:0 auto;color:var(--muted);font-size:clamp(1.03rem,1.8vw,1.2rem)}
     .actions{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:30px}
-    .btn{display:inline-flex;align-items:center;justify-content:center;text-decoration:none;min-height:42px;padding:9px 17px;border:1px solid #777b77;font-weight:700;font-size:.9rem;background:transparent}
-    .btn.primary{background:var(--fg);border-color:var(--fg);color:var(--bg)}.btn.primary:hover{background:#fff}
-    .screen-footer{position:relative;z-index:2;display:flex;justify-content:space-between;gap:12px;border-top:1px solid #282b29;padding:10px 16px;font-size:.72rem;letter-spacing:.12em;color:#a7aaa6}
-    .rule{border:0;border-top:1px solid var(--line);margin:0}section{padding:56px 0 62px;scroll-margin-top:25px}
-    .section-title{display:flex;align-items:baseline;gap:22px;margin:0 0 22px}.num{color:var(--muted);font-size:.86rem;font-weight:800}
-    .section-title h2{font-size:clamp(1.85rem,4.2vw,3.3rem);letter-spacing:-.045em;line-height:1.08;margin:0;font-weight:800}
-    .lead{max-width:815px;color:#deded9;font-size:1.15rem}
+    .btn{display:inline-flex;justify-content:center;align-items:center;padding:10px 16px;min-height:44px;border:1px solid #777a7b;text-decoration:none;font-size:.88rem;font-weight:800;letter-spacing:.045em;text-transform:uppercase}
+    .btn.primary{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+    .btn.primary:hover{background:#d5d2c9}
+    .rule{border:0;border-top:1px solid var(--line);margin:0}
+    section{padding:59px 0;scroll-margin-top:24px}
+    .section-title{display:flex;align-items:baseline;gap:22px;margin:0 0 24px}
+    .num{font-size:.86rem;font-weight:800;color:var(--muted);font-variant-numeric:tabular-nums}
+    .section-title h2{font-size:clamp(1.95rem,4vw,3.25rem);font-weight:900;letter-spacing:-.04em;line-height:1.09;margin:0}
+    .lead{max-width:810px;font-size:1.16rem;color:#deded9}
     .tiles{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-    .tile{border:1px solid var(--line);background:#0c0d0d;padding:25px 22px}
-    .tile h3{font-size:1.19rem;margin:0 0 12px}.tile p{color:var(--muted);margin:0}
-    .detail{max-width:840px;overflow-wrap:anywhere}.detail h3{font-size:1.26rem;margin:30px 0 9px}
-    .detail p,.detail li{color:var(--muted)}.detail a{color:var(--fg)}.detail p{margin:0 0 13px}
-    .detail code{font:.86em ui-monospace,Consolas,monos;border:1px solid var(--line);padding:.12em .33em}
-    #fonctionnement>.detail{border-left:2px solid var(--line);padding-left:20px;margin-top:30px}
-    .small{font-size:.91rem}.contact{font-size:clamp(1.12rem,3vw,2rem);font-weight:800;overflow-wrap:anywhere}
-    .footer{border-top:1px solid var(--line);padding:27px 0 42px;display:flex;justify-content:space-between;gap:17px;flex-wrap:wrap;color:var(--muted);font-size:.86rem}
-    .footer a{text-decoration:none}.footnav{display:flex;gap:14px 18px;flex-wrap:wrap}
-    @media(max-width:740px){header,main,footer{width:calc(100% - 32px)}.masthead{align-items:flex-start;flex-direction:column}.hero{padding:52px 19px 48px}.hero-screen{min-height:0}.hero h1{font-size:clamp(2.65rem,12vw,5rem)}.tiles{grid-template-columns:1fr}.screen-footer{flex-wrap:wrap}section{padding:42px 0 50px}.section-title{gap:13px}.footer{flex-direction:column}}
+    .tile{background:var(--surface);border:1px solid var(--line);padding:26px 22px}
+    .tile h3{font-size:1.18rem;letter-spacing:-.02em;margin:0 0 13px;font-weight:800}
+    .tile p{margin:0;color:var(--muted)}
+    .detail{max-width:830px;overflow-wrap:anywhere}
+    #fonctionnement>.detail{border-top:1px solid var(--line);padding-top:5px;margin-top:30px}
+    .detail h3{font-size:1.26rem;font-weight:800;letter-spacing:-.02em;margin:28px 0 8px}
+    .detail p,.detail li{color:var(--muted)}
+    .detail p{margin:0 0 13px}
+    .detail a{color:var(--fg)}
+    .detail code{font:.89em ui-monospace,Consolas,monos;border:1px solid var(--line);padding:.12em .25em}
+    .small{font-size:.9rem;color:var(--muted)}
+    .contact{font-size:clamp(1.1rem,3vw,1.85rem);font-weight:800;overflow-wrap:anywhere}
+    .footer{border-top:1px solid var(--line);display:flex;flex-wrap:wrap;justify-content:space-between;gap:15px;padding:28px 0 43px;color:var(--muted);font-size:.86rem}
+    .footer a{text-decoration:none}
+    .footnav{display:flex;flex-wrap:wrap;gap:12px 18px}
+    @media(max-width:740px){
+      header,main,footer{width:calc(100% - 32px)}
+      .masthead{flex-direction:column;align-items:flex-start;gap:22px}
+      .nav{gap:10px 15px}
+      .hero-screen{margin-top:17px}
+      .hero{padding:27px 8px 38px}
+      .hero p{padding:0 12px}
+      .actions{padding:0 12px}
+      .tiles{grid-template-columns:1fr}
+      section{padding:44px 0}.section-title{gap:13px}
+      .footer{flex-direction:column}
+    }
     @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   </style>
 </head>
 <body>
   <header class="masthead">
-    <a class="brand" href="#accueil" aria-label="ZAPROPOS, retour en haut"><span class="brand-initial">Z</span><span>APROPOS</span></a>
+    <a class="brand" href="#accueil" aria-label="ZAPROPOS, retour en haut">ZAPROPOS</a>
     <nav class="nav" aria-label="Navigation du site">
       <a href="#projet">Projet</a><a href="#fonctionnement">Fonctionnement</a><a href="#confidentialite">Confidentialité</a><a href="#conditions">Conditions</a><a href="#contact">Contact</a>
     </nav>
@@ -61,12 +92,11 @@
   <main id="accueil">
     <div class="hero-screen">
       <div class="hero">
-        <div class="broadcast-meta"><span class="signal" aria-hidden="true"></span><span>ÉDITION / ZAPROPOS</span><span class="tag">Projet média indépendant · En préparation</span></div>
-        <h1><span>ZAPROPOS</span><span class="second-line">LE ZAPPING DU JOUR</span></h1>
+        <p class="hero-kicker">Projet média indépendant · En préparation</p>
+        <h1><span class="sr-only">ZAPROPOS</span><img class="hero-logo" src="/logo-zapropos.svg" alt="" width="838" height="197"></h1>
         <p>Une sélection de moments d'actualité, de prises de parole et de séquences décalées, réunis dans un montage court au rythme soutenu.</p>
         <div class="actions"><a class="btn primary" href="#projet">Découvrir ZAPROPOS</a><a class="btn" href="https://www.youtube.com/@zapropos.officiel" target="_blank" rel="noopener noreferrer">Chaîne YouTube ↗</a><a class="btn" href="#confidentialite">Confidentialité</a></div>
       </div>
-      <div class="screen-footer" aria-hidden="true"><span>ZAPROPOS / SIGNAL 01</span><span>LES IMAGES · LES MOTS · LE CONTREPOINT</span></div>
     </div>
     <hr class="rule">
     <section id="projet" aria-labelledby="titre-projet">
